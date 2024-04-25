@@ -1,0 +1,37 @@
+{
+  "name": "webext test",
+  "description": "webext test",
+  "__chrome|opera__manifest_version": 3,
+  "__firefox__manifest_version": 2,
+  "content_scripts": [
+    {
+      "run_at": "document_idle",
+      "js": ["content.js"],
+      "matches": ["https://test.com/*"]
+    }
+  ],
+  "__firefox__permissions": ["https://test.com/*"],
+  "__firefox__background": {
+    "scripts": ["background.js"]
+  },
+  "__chrome|opera__background": {
+    "service_worker": "background.js"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "__firefox__browser_action": {
+    "default_popup": "popup.html"
+  },
+  "__chrome|opera__action": {
+    "default_popup": "popup.html"
+  },
+  "__chrome|opera__web_accessible_resources": [
+    {
+      "resources": ["assets/*.js"],
+      "matches": ["https://test.com/*"]
+    }
+  ],
+  "__firefox__web_accessible_resources": ["assets/*.js"]
+}
